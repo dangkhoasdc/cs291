@@ -15,7 +15,6 @@ var windowScale;
 
 function PolygonGeometry(sides) {
 	var geo = new THREE.Geometry();
-
 	// generate vertices
 	for ( var pt = 0 ; pt < sides; pt++ )
 	{
@@ -27,10 +26,16 @@ function PolygonGeometry(sides) {
 
 		// YOUR CODE HERE
 		//Save the vertex location - fill in the code
+    geo.vertices.push(new THREE.Vector3(x, y, 0));
 
 	}
 	// YOUR CODE HERE
 	// Write the code to generate minimum number of faces for the polygon.
+
+  for (var index = 1; index < geo.vertices.length - 1; index++) 
+  {
+    geo.faces.push(new THREE.Face3(0, index, index+1));
+  }
 
 	// Return the geometry object
 	return geo;
